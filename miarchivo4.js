@@ -103,9 +103,9 @@ function validarEmail(email) {
 //     }
 // ];
 
-const generarCards = (arrayDe) => {
+const generarCards = (productos) => {
 let acumulador = ``;
-arrayDe.forEach((producto) => {
+productos.forEach((producto) => {
     acumulador += `<div class="col mb-5">
     <div class="card h-100">
     <!-- Product image-->
@@ -121,7 +121,7 @@ arrayDe.forEach((producto) => {
     </div>
     <!-- Product actions-->
     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-    <div class="text-center"><a onclick = "agregarAlCarrito(${producto.id})" 
+    <div class="text-center"><a onclick = "agregarAlCarrito('${producto.id}')" 
     class="btn btn-outline-dark mt-auto" href="#">Agregar al carrito</a></div>
     </div>
     </div>
@@ -144,7 +144,7 @@ function agregarAlCarrito (id) {
         onClick: function(){}
     }).showToast();
     
-    // const resultado = arrayDeProductos.find ((producto) => producto.id === id);
+    const resultado = productos.find ((producto) => producto.id === id);
     
     carrito.push (resultado);
     
@@ -152,7 +152,7 @@ function agregarAlCarrito (id) {
     
     localStorage.setItem ('carrito',carritoJSON);
     
-    const totalCarrito = carrito.reduce ((acumulador,producto) => acumulador + producto.price, 0);
+    const totalCarrito = carrito.reduce((acumulador,productos) => acumulador + productos.price ,0);
     
     document.getElementById('carrito-elementos').innerHTML = carrito.length + " $ " + totalCarrito;
     
