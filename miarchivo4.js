@@ -1,17 +1,17 @@
-const API_URL = 'https://api.mercadolibre.com/';
+// const API_URL = 'https://api.mercadolibre.com/';
 
-const endpointProductos = '/sites/MLA/search';
+// const endpointProductos = '/sites/MLA/search';
 
-let productos;
+let productos = [];
 
-const traerDatos = () => {
-    fetch(API_URL + endpointProductos+ '?q=proteínawhey')
+
+    fetch("./productos.json")
     .then((response) => response.json())
     .then((data) => {
-        productos = data.results;
+        productos = data;
         generarCards(productos);
     }) 
-}
+
 
 document.getElementById ("tituloDelSitio").innerHTML = "Prime Suplementos"
 
@@ -109,20 +109,20 @@ productos.forEach((producto) => {
     acumulador += `<div class="col mb-5">
     <div class="card h-100">
     <!-- Product image-->
-    <img class="card-img-top" src="${producto.thumbnail}" alt="..." />
+    <img class="card-img-top" src="${producto.img}" alt="..." />
     <!-- Product details-->
     <div class="card-body p-4">
     <div class="text-center">
     <!-- Product name-->
-    <h5 class="fw-bolder">${producto.title}</h5>
+    <h5 id = "descripcion" class="fw-bolder">${producto.nombre}</h5>
     <!-- Product price-->
-    $${producto.price}
+    $${producto.precio}
     </div>
     </div>
     <!-- Product actions-->
     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-    <div class="text-center"><a onclick = "agregarAlCarrito('${producto.id}')" 
-    class="btn btn-outline-dark mt-auto" href="#">Agregar al carrito</a></div>
+    <div class="text-center"><a onclick = "agregarAlCarrito(${producto.id})" 
+    class="btn btn-outline-dark mt-auto" href = "#">Agregar al carrito</a></div>
     </div>
     </div>
     </div>`;
@@ -152,7 +152,7 @@ function agregarAlCarrito (id) {
     
     localStorage.setItem ('carrito',carritoJSON);
     
-    const totalCarrito = carrito.reduce((acumulador,productos) => acumulador + productos.price ,0);
+    const totalCarrito = carrito.reduce((acumulador,producto) => acumulador + producto.precio ,0);
     
     document.getElementById('carrito-elementos').innerHTML = carrito.length + " $ " + totalCarrito;
     
@@ -183,4 +183,3 @@ function agregarAlCarrito (id) {
         }
     }
     
-    traerDatos();
