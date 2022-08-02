@@ -3,8 +3,6 @@
 // const endpointProductos = '/sites/MLA/search';
 
 let productos = [];
-
-
     fetch("./productos.json")
     .then((response) => response.json())
     .then((data) => {
@@ -12,96 +10,99 @@ let productos = [];
         generarCards(productos);
     }) 
 
-
 document.getElementById ("tituloDelSitio").innerHTML = "Prime Suplementos"
 
 document.getElementById ("subtituloDelSitio").innerHTML = "Potencia tus resultados al máximo"
 
 const botonRegistrarse = document.getElementById ("iniciar-sesion");
 
-const contenedorLogIn = document.querySelector ('.login');
+// const contenedorLogIn = document.querySelector ('.login');
 
 const botonCarrito = document.getElementById ('boton-carrito');
 
-let usuario = document.getElementById("usuario").value;
+// let usuario = document.getElementById("usuario").value;
 
-let contraseña = document.getElementById("contraseña").value;
+// let contraseña = document.getElementById("contraseña").value;
 
 let limpiarCarrito = document.getElementById ('eliminar-productos');
 
+
 botonRegistrarse.onclick = () => {
-    contenedorLogIn.classList.add('login-invisible');
-    Swal.fire({
-        title: 'Iniciaste sesión en Prime Suplementos!',
-        icon: 'success',
-        showConfirmButton: false,
-        timer:2000,
-        padding: '2em',
-        color: 'black',
-    })
-} 
-
-document.getElementById ("usuario").onchange = (e) => {
-    const usuario = e.target.value;
-    const usuarioValido = validarEmail(usuario);
-    document.getElementById ("feedback").innerHTML = (usuarioValido)
-    ? "Email valido!" : "Email no valido!";
-} 
-
-document.getElementById ("usuario").oninput = validarBoton;
-
-document.getElementById ("contraseña").oninput = validarBoton;
-
-function validarBoton () {
-    const usuario = document.getElementById("usuario").value;
-    const password = document.getElementById("contraseña").value;
-    
-    if(usuario && password){
-        botonRegistrarse.style.background = "lightblack";
-        botonRegistrarse.style.color = "black";
-        botonRegistrarse.disabled= false;
-    } else {
-        botonRegistrarse.disabled= true;
-    }
+    (async() => {
+        const { value: formValues } = await Swal.fire({
+            title: 'Iniciar Sesión',
+            html:
+            '<input id="swal-input1" class="swal2-input">' +
+            '<input id="swal-input2" class="swal2-input">',
+            focusConfirm: false,
+            preConfirm: () => {
+            return [
+                document.getElementById('swal-input1').value,
+                document.getElementById('swal-input2').value
+            ]
+            }
+        })
+        
+        if (formValues) {
+            Swal.fire({
+                title: 'Iniciaste sesión en Prime Suplementos!',
+                icon: 'success',
+                showConfirmButton: false,
+                timer:2000,
+                padding: '2em',
+                color: 'black',
+            })
+        }
+})  ()
 }
 
-function validarEmail(email) {
-    return String(email)
-    .toLowerCase()
-    .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        );
-    };
+// botonRegistrarse.onclick = () => {
+//     contenedorLogIn.classList.add('login-invisible');
+    // Swal.fire({
+    //     title: 'Iniciaste sesión en Prime Suplementos!',
+    //     icon: 'success',
+    //     showConfirmButton: false,
+    //     timer:2000,
+    //     padding: '2em',
+    //     color: 'black',
+    // })
+// } 
+
+// document.getElementById ("usuario").onchange = (e) => {
+//     const usuario = e.target.value;
+//     const usuarioValido = validarEmail(usuario);
+//     document.getElementById ("feedback").innerHTML = (usuarioValido)
+//     ? "Email valido!" : "Email no valido!";
+// } 
+
+// document.getElementById ("usuario").oninput = validarBoton;
+
+// document.getElementById ("contraseña").oninput = validarBoton;
+
+// function validarBoton () {
+//     const usuario = document.getElementById("usuario").value;
+//     const password = document.getElementById("contraseña").value;
     
-    const carritoStorage = localStorage.getItem ('carrito'); 
-    
-    const carrito = JSON.parse (carritoStorage) ?? [];
-    
-//     const arrayDeProductos = [{
-//         id: 1,
-//         nombre: "Whey Protein",
-//         precio: 4500,
-//         stock: "hay stock"
-//     },
-//     {
-//         id: 2,
-//         nombre: "Creatina",
-//         precio: 6500,
-//         stock: "sin stock",
-//     },
-//     {
-//         id: 3, 
-//         nombre: "Pre-workout",
-//         precio: 3000,
-//         stock: "sin stock"
-//     },
-//     {
-//         id: 4,
-//         nombre: "Aminoacidos BCAA",
-//         precio: 1500,
-//         stock: "sin stock"
+//     if(usuario && password){
+//         botonRegistrarse.style.background = "lightblack";
+//         botonRegistrarse.style.color = "black";
+//         botonRegistrarse.disabled= false;
+//     } else {
+//         botonRegistrarse.disabled= true;
 //     }
-// ];
+// }
+
+// function validarEmail(email) {
+//     return String(email)
+//     .toLowerCase()
+//     .match(
+//         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+//         );
+//     };
+
+const carritoStorage = localStorage.getItem ('carrito'); 
+
+const carrito = JSON.parse (carritoStorage) ?? [];
 
 const generarCards = (productos) => {
 let acumulador = ``;

@@ -11287,12 +11287,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.login {
-  background-color: lightgrey;
-}
-.login-invisible {
-display: none;
-}
+
 
 #descripcion {
 background-color: rgb(200, 200, 200);
