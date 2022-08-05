@@ -1,104 +1,48 @@
-// const API_URL = 'https://api.mercadolibre.com/';
-
-// const endpointProductos = '/sites/MLA/search';
-
-let productos = [];
+let productos;
     fetch("./productos.json")
     .then((response) => response.json())
     .then((data) => {
         productos = data;
         generarCards(productos);
     }) 
-
 document.getElementById ("tituloDelSitio").innerHTML = "Prime Suplementos"
 
 document.getElementById ("subtituloDelSitio").innerHTML = "Potencia tus resultados al máximo"
 
-const botonRegistrarse = document.getElementById ("iniciar-sesion");
-
-// const contenedorLogIn = document.querySelector ('.login');
+const botonRegistrarse = document.getElementById ('iniciar-sesion');
 
 const botonCarrito = document.getElementById ('boton-carrito');
 
-// let usuario = document.getElementById("usuario").value;
-
-// let contraseña = document.getElementById("contraseña").value;
+const contadorCarrito = document.querySelector ('#carrito-elementos')
 
 let limpiarCarrito = document.getElementById ('eliminar-productos');
 
+const desaparecer = () => {
+    botonRegistrarse.classList.add ('invisible1') 
+}
 
 botonRegistrarse.onclick = () => {
     (async() => {
-        const { value: formValues } = await Swal.fire({
-            title: 'Iniciar Sesión',
-            html:
-            '<input id="swal-input1" class="swal2-input">' +
-            '<input id="swal-input2" class="swal2-input">',
-            focusConfirm: false,
-            preConfirm: () => {
-            return [
-                document.getElementById('swal-input1').value,
-                document.getElementById('swal-input2').value
-            ]
-            }
+        const {value : login} =  await Swal.fire({        
+        html: '<div class = "A-background" ><div class = "A-content"><div class = "A-C-B1"><input type = "email" class = "A-input-1" placeholder="Usuario"></div><div class = "A-C-B2"><input type="password" class = "A-input-1" placeholder="Contraseña"</div></div></div>'
         })
-        
-        if (formValues) {
-            Swal.fire({
-                title: 'Iniciaste sesión en Prime Suplementos!',
-                icon: 'success',
-                showConfirmButton: false,
-                timer:2000,
-                padding: '2em',
-                color: 'black',
-            })
+        if (login) {
+            desaparecer();
+            Toastify({
+                text: "Iniciaste sesión en Prime Suplementos",
+                duration: 3000,
+                close: true,
+                gravity: "top", 
+                position: "right", 
+                stopOnFocus: true, 
+                style: {
+                    background: "linear-gradient(to right, #71777a, #9d9c9a)",
+                }, 
+                
+            }).showToast();
         }
-})  ()
+    }) ()
 }
-
-// botonRegistrarse.onclick = () => {
-//     contenedorLogIn.classList.add('login-invisible');
-    // Swal.fire({
-    //     title: 'Iniciaste sesión en Prime Suplementos!',
-    //     icon: 'success',
-    //     showConfirmButton: false,
-    //     timer:2000,
-    //     padding: '2em',
-    //     color: 'black',
-    // })
-// } 
-
-// document.getElementById ("usuario").onchange = (e) => {
-//     const usuario = e.target.value;
-//     const usuarioValido = validarEmail(usuario);
-//     document.getElementById ("feedback").innerHTML = (usuarioValido)
-//     ? "Email valido!" : "Email no valido!";
-// } 
-
-// document.getElementById ("usuario").oninput = validarBoton;
-
-// document.getElementById ("contraseña").oninput = validarBoton;
-
-// function validarBoton () {
-//     const usuario = document.getElementById("usuario").value;
-//     const password = document.getElementById("contraseña").value;
-    
-//     if(usuario && password){
-//         botonRegistrarse.style.background = "lightblack";
-//         botonRegistrarse.style.color = "black";
-//         botonRegistrarse.disabled= false;
-//     } else {
-//         botonRegistrarse.disabled= true;
-//     }
-// }
-
-// function validarEmail(email) {
-//     return String(email)
-//     .toLowerCase()
-//     .match(
-//         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-//         );
-//     };
 
 const carritoStorage = localStorage.getItem ('carrito'); 
 
@@ -152,35 +96,51 @@ function agregarAlCarrito (id) {
     const carritoJSON = JSON.stringify (carrito);
     
     localStorage.setItem ('carrito',carritoJSON);
-    
-    const totalCarrito = carrito.reduce((acumulador,producto) => acumulador + producto.precio ,0);
+
+    const totalCarrito = carrito.reduce((acumulador,producto) => acumulador + producto.precio, 0);
     
     document.getElementById('carrito-elementos').innerHTML = carrito.length + " $ " + totalCarrito;
+
+    renderCarrito();
+}
+
+const renderCarrito = () => {
+    carritoContenedor.innerHTML = ``;
     
-    limpiarCarrito.onclick = () =>{limpiar()}
-    function limpiar() {
-        localStorage.clear();
-        Swal.fire({
-            title: 'Estas seguro que deseas continuar?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, borrar carrito!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                    'Eliminado!',
-                    'Eliminaste todos los productos del carrito',
-                    'success'
-                    )
-                    document.getElementById('carrito-elementos').innerHTML = carrito.length = 0;
-                }
-            })
-        }
+    productos.forEach((producto) => {
+        const div = document.createElement("div")
+        div.classList.add ("producto-carrito")
+
+            div.innerHTML = `
+                                <div class= "PC-C-B1"><img class="PC-img-1" id="imagenC" src='${producto.img}'/></div>
+                                <div class= "PC-C-B2"><p id="nombreC">${producto.nombre}</p></div>
+                                <div class= "PC-C-B3"><p id="precioC">$ ${producto.precio}</p></div>
+                                <div class= "PC-C-B4"><button onclick="removerDelCarrito(${producto.id})" id="eliminarProducto">X</button></div>
+                        `
+                        carritoContenedor.append(div)
+                    })
+}   
+
+
+limpiarCarrito.onclick = () =>{limpiar()}
+function limpiar() {
+    localStorage.clear();
+    Swal.fire({
+        title: 'Estas seguro que deseas continuar?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrar carrito!'
+    }).then((result) => {
         
-        botonCarrito.onclick = () => {
-            totalCarrito >= 10000 ? Swal.fire('Actualmente tenes ' + carrito.length + ' productos en el carrito, por un valor de ARS$ ' + (totalCarrito) * 0.9) : Swal.fire('Actualmente tenes ' + carrito.length + ' productos en el carrito, por un valor de ARS$ ' + totalCarrito); 
-        }
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Eliminado!',
+                'Eliminaste todos los productos del carrito',
+                'success'
+                )
+                document.getElementById('carrito-elementos').innerHTML = carrito.length = 0;
+            }
+        })
     }
-    

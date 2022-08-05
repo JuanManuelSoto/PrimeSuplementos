@@ -18,19 +18,25 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     </head>
     <body>
-        <!-- Navigation-->
-        <!-- <form class= 'login' action="#">
-            <div>
-                <label>Usuario</label>
-                <input type= "email" required 
-                maxlength="80" id= "usuario">
-                <b id= "feedback" ></b>
+
+
+        <div class="carrito-contenedor">
+            
+            <div class="CC-container">
+
+            <div class="CC-C-B1">
+                <p class="CC-txt-1">Carrito de compras</p>
+                <p class= "CC-btn-1">X</p>
             </div>
-            <div>
-                <label>Contraseña</label>
-                <input type="password" maxlength="21" minlength="8" required id= "contraseña">
+
+                <div class="CC-C-B2 productos-agregados">
+                    
+                </div>
+                
             </div>
-        </form> -->
+            
+        </div>
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="#!">Menu principal</a>
@@ -51,7 +57,7 @@
                 </ul>
                 <button class="btn btn-outline-dark" id= "iniciar-sesion" >Iniciar Sesión</button>
                 <form class="d-flex">
-                    <button class="btn btn-outline-dark" id = 'boton-carrito' >
+                    <button class="btn btn-outline-dark hola" id = 'boton-carrito' >
                         <i class="bi-cart-fill me-1"></i>
                         Carrito
                         <span class="badge bg-dark text-white ms-1 rounded-pill" id = "carrito-elementos">0</span>
@@ -90,5 +96,6 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src = "miarchivo4.js" defer></script>
+    <script src = "scripts.js" defer></script>
 </body>
 </html>
