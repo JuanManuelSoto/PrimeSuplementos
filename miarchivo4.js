@@ -1,4 +1,12 @@
-let productos;
+let productos = [];
+
+document.addEventListener ('DOMContentLoaded', () => {
+    if (localStorage.getItem('carrito')) {
+        carrito = JSON.parse(localStorage.getItem('carrito'));
+        actualizarCarrito();
+    }
+})
+
     fetch("./productos.json")
     .then((response) => response.json())
     .then((data) => {
@@ -15,7 +23,7 @@ const botonCarrito = document.getElementById ('boton-carrito');
 
 const contadorCarrito = document.querySelector ('#carrito-elementos')
 
-let limpiarCarrito = document.getElementById ('eliminar-productos');
+const vaciarCarrito = document.getElementById ('eliminar-productos');
 
 const desaparecer = () => {
     botonRegistrarse.classList.add ('invisible1') 
@@ -88,11 +96,21 @@ function agregarAlCarrito (id) {
         }, 
         onClick: function(){}
     }).showToast();
+
+    // const existe = carrito.some(producto => producto.id === id);
+
+    // if (existe) {
+    //     const producto = carrito.map(producto => {
+    //         if (producto.id === id) {
+    //             producto.cantidad ++ ;
+    //         }
+    //     })
+    // } else {
     
-    const resultado = productos.find ((producto) => producto.id === id);
-    
-    carrito.push (resultado);
-    
+    var item = productos.find ((producto) => producto.id === id);
+    carrito.push (item);
+
+
     const carritoJSON = JSON.stringify (carrito);
     
     localStorage.setItem ('carrito',carritoJSON);
@@ -101,30 +119,31 @@ function agregarAlCarrito (id) {
     
     document.getElementById('carrito-elementos').innerHTML = carrito.length + " $ " + totalCarrito;
 
-    renderCarrito();
+    actualizarCarrito();
+}
+// }
+const eliminarDelCarrito = (id) => {
+    Toastify({
+        text: "Eliminaste el producto del carrito",
+        duration: 1500,
+        close: true,
+        gravity: "top", 
+        position: "right", 
+        stopOnFocus: true, 
+        style: {
+            background: "linear-gradient(to right, #71777a, #9d9c9a)",
+        }, 
+        onClick: function(){}
+    }).showToast();
+    const item = carrito.find ((producto) => producto.id === id);
+    const indice = carrito.indexOf(item);
+    carrito.splice(indice, 1);
+    actualizarCarrito();
 }
 
-const renderCarrito = () => {
-    carritoContenedor.innerHTML = ``;
-    
-    productos.forEach((producto) => {
-        const div = document.createElement("div")
-        div.classList.add ("producto-carrito")
 
-            div.innerHTML = `
-                                <div class= "PC-C-B1"><img class="PC-img-1" id="imagenC" src='${producto.img}'/></div>
-                                <div class= "PC-C-B2"><p id="nombreC">${producto.nombre}</p></div>
-                                <div class= "PC-C-B3"><p id="precioC">$ ${producto.precio}</p></div>
-                                <div class= "PC-C-B4"><button onclick="removerDelCarrito(${producto.id})" id="eliminarProducto">X</button></div>
-                        `
-                        carritoContenedor.append(div)
-                    })
-}   
-
-
-limpiarCarrito.onclick = () =>{limpiar()}
+vaciarCarrito.onclick = () =>{limpiar()}
 function limpiar() {
-    localStorage.clear();
     Swal.fire({
         title: 'Estas seguro que deseas continuar?',
         icon: 'warning',
@@ -135,6 +154,9 @@ function limpiar() {
     }).then((result) => {
         
         if (result.isConfirmed) {
+            carrito.length = 0;
+            localStorage.clear();
+            actualizarCarrito();
             Swal.fire(
                 'Eliminado!',
                 'Eliminaste todos los productos del carrito',
@@ -144,3 +166,23 @@ function limpiar() {
             }
         })
     }
+
+    const actualizarCarrito = () => {
+        carritoContenedor.innerHTML = ``;
+        
+        carrito.forEach((producto) => {
+            const div = document.createElement("div")
+            div.classList.add ("producto-carrito")
+    
+                div.innerHTML = `
+                                    <div class= "PC-C-B1"><img class="PC-img-1" id="imagenC" src='${producto.img}'/></div>
+                                    <div class= "PC-C-B2"><p id="nombreC">${producto.nombre}</p></div>
+                                    <div class= "PC-C-B21"><p id="cantidadC">${producto.cantidad}</p></div>
+                                    <div class= "PC-C-B3"><p id="precioC">$ ${producto.precio}</p></div>
+                                    <div class= "PC-C-B4"><button onclick="eliminarDelCarrito(${producto.id})" id="eliminarProducto">X</button></div>
+                            `
+                            carritoContenedor.append(div)
+                            localStorage.setItem('carrito', JSON.stringify(carrito))
+                        })
+                    }   
+    

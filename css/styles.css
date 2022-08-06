@@ -11415,14 +11415,13 @@ padding: 0.1vh;
   height: 100%;
   width: 100%;
   background-color: none;
-  grid-template-columns: 19% 39% 29% 9%;
+  grid-template-columns: 19% 39% 9% 19% 9%;
   grid-column-gap: 1% ;
   justify-content: space-between;
   border-bottom: 1px solid gray;
 }
 
 .PC-C-B1{
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11434,7 +11433,6 @@ padding: 0.1vh;
 }
 
 .PC-C-B2{
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11448,7 +11446,6 @@ padding: 0.1vh;
 }
 
 .PC-C-B3{
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11460,8 +11457,19 @@ padding: 0.1vh;
   font-weight: 700;
 }
 
-.PC-C-B4{
+.PC-C-B21{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+#cantidadC{
+  margin: 0;
+  font-size: 0.7vw;
+  font-weight: 700;
+}
+
+.PC-C-B4{
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,14 +1,14 @@
 [
-{"id":1 , "nombre":"Whey Protein Whey X Pro", "precio":5440 , "stock":"hay stock", "img": "https://http2.mlstatic.com/D_NQ_NP_825125-MLA48893954211_012022-V.webp"},
-{"id":2 , "nombre":"Whey Protein Gold Standard 100% ", "precio":17270 , "stock":"no hay stock", "img": "https://http2.mlstatic.com/D_NQ_NP_944899-MLA47951377538_102021-V.webp"},
-{"id":3 , "nombre":"Whey Protein BSN Syntha-6", "precio":17750 , "stock":"no hay stock", "img": "https://http2.mlstatic.com/D_NQ_NP_986493-MLA50018887612_052022-V.webp"},
-{"id":4 , "nombre":"Whey Protein Star Nutrition", "precio":4850 , "stock":"no hay stock", "img": "https://http2.mlstatic.com/D_NQ_NP_738057-MLA48946238081_012022-V.webp"},
-{"id":5 , "nombre":"Creatina Monohydrate Star Nutrition", "precio":9000 , "stock":"no hay stock", "img": "https://http2.mlstatic.com/D_NQ_NP_705680-MLA48462687556_122021-V.webp"},
-{"id":6 , "nombre":"Creatina Micronized ENA", "precio":6400 , "stock":"no hay stock", "img": "https://http2.mlstatic.com/D_NQ_NP_772770-MLA49211946466_022022-V.webp"},
-{"id":7 , "nombre":"Creatina Micronized Xtrenght", "precio":7080 , "stock":"no hay stock", "img": "https://http2.mlstatic.com/D_NQ_NP_843555-MLA42153032129_062020-V.webp"},
-{"id":8 , "nombre":"Creatina Monohydrate Ultratech ", "precio":7600 , "stock":"no hay stock", "img": "https://http2.mlstatic.com/D_NQ_NP_742925-MLA31838582536_082019-V.webp"},
-{"id":9 , "nombre":"Pre Workout C4 Original Cellucor", "precio":17500 , "stock":"no hay stock", "img": "https://http2.mlstatic.com/D_NQ_NP_631452-MLA48403905070_122021-V.webp"},
-{"id":10 , "nombre":"Pre Workout Pre War ENA", "precio":2600 , "stock":"no hay stock", "img": "https://http2.mlstatic.com/D_NQ_NP_812126-MLA50001236540_052022-V.webp"},
-{"id":11 , "nombre":"Pre Workout Insane Labz Gold", "precio":23700 , "stock":"no hay stock", "img": "https://http2.mlstatic.com/D_NQ_NP_809752-MLA48980511202_012022-V.webp"},
-{"id":12 , "nombre":"Pre Workout Pump V8 Star Nutrition", "precio":3300 , "stock":"no hay stock", "img": "https://http2.mlstatic.com/D_NQ_NP_697287-MLA43558213169_092020-V.webp"}
+{"id":1 , "nombre":"Whey Protein Whey X Pro", "precio":5440 , "cantidad": 1, "img": "https://http2.mlstatic.com/D_NQ_NP_825125-MLA48893954211_012022-V.webp"},
+{"id":2 , "nombre":"Whey Protein Gold Standard 100% ", "precio":17270 , "cantidad": 1, "img": "https://http2.mlstatic.com/D_NQ_NP_944899-MLA47951377538_102021-V.webp"},
+{"id":3 , "nombre":"Whey Protein BSN Syntha-6", "precio":17750 , "cantidad": 1, "img": "https://http2.mlstatic.com/D_NQ_NP_986493-MLA50018887612_052022-V.webp"},
+{"id":4 , "nombre":"Whey Protein Star Nutrition", "precio":4850 , "cantidad": 1, "img": "https://http2.mlstatic.com/D_NQ_NP_738057-MLA48946238081_012022-V.webp"},
+{"id":5 , "nombre":"Creatina Monohydrate Star Nutrition", "precio":9000 , "cantidad": 1, "img": "https://http2.mlstatic.com/D_NQ_NP_705680-MLA48462687556_122021-V.webp"},
+{"id":6 , "nombre":"Creatina Micronized ENA", "precio":6400 , "cantidad": 1, "img": "https://http2.mlstatic.com/D_NQ_NP_772770-MLA49211946466_022022-V.webp"},
+{"id":7 , "nombre":"Creatina Micronized Xtrenght", "precio":7080 , "cantidad": 1, "img": "https://http2.mlstatic.com/D_NQ_NP_843555-MLA42153032129_062020-V.webp"},
+{"id":8 , "nombre":"Creatina Monohydrate Ultratech ", "precio":7600 , "cantidad": 1, "img": "https://http2.mlstatic.com/D_NQ_NP_742925-MLA31838582536_082019-V.webp"},
+{"id":9 , "nombre":"Pre Workout C4 Original Cellucor", "precio":17500 , "cantidad": 1, "img": "https://http2.mlstatic.com/D_NQ_NP_631452-MLA48403905070_122021-V.webp"},
+{"id":10 , "nombre":"Pre Workout Pre War ENA", "precio":2600 , "cantidad": 1, "img": "https://http2.mlstatic.com/D_NQ_NP_812126-MLA50001236540_052022-V.webp"},
+{"id":11 , "nombre":"Pre Workout Insane Labz Gold", "precio":23700 , "cantidad": 1, "img": "https://http2.mlstatic.com/D_NQ_NP_809752-MLA48980511202_012022-V.webp"},
+{"id":12 , "nombre":"Pre Workout Pump V8 Star Nutrition", "precio":3300 , "cantidad": 1, "img": "https://http2.mlstatic.com/D_NQ_NP_697287-MLA43558213169_092020-V.webp"}
 ]
