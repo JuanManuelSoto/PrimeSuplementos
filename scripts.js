@@ -1,8 +1,8 @@
 const contenedorModal = document.querySelector('.carrito-contenedor');
 
-const botonCerrar = document.querySelector('.CC-btn-1')
+const botonCerrar = document.querySelector('.CC-btn-1');
 
-const carritoContenedor = document.querySelector ('.productos-agregados')
+const carritoContenedor = document.querySelector ('.productos-agregados');
 
 botonCarrito.addEventListener ('click', () => {
     contenedorModal.classList.toggle ('modal-activo')
@@ -11,4 +11,3 @@ botonCarrito.addEventListener ('click', () => {
 botonCerrar.addEventListener ('click', () => {
     contenedorModal.classList.toggle ('modal-activo')
 })
-

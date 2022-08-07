@@ -1,15 +1,5 @@
 @charset "UTF-8";
-/*!
-* Start Bootstrap - Shop Homepage v5.0.5 (https://startbootstrap.com/template/shop-homepage)
-* Copyright 2013-2022 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
-*/
-/*!
- * Bootstrap v5.1.3 (https://getbootstrap.com/)
- * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -2485,10 +2475,10 @@ textarea.form-control-lg {
   background-size: contain;
   border: 1px solid rgba(0, 0, 0, 0.25);
   -webkit-appearance: none;
-     -moz-appearance: none;
+  -moz-appearance: none;
           appearance: none;
   -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+  color-adjust: exact;
 }
 .form-check-input[type=checkbox] {
   border-radius: 0.25em;
@@ -11290,10 +11280,8 @@ textarea.form-control-lg {
 
 
 #descripcion {
-background-color: rgb(200, 200, 200);
 margin: 0px;  
 text-align: center;
-border-radius: 10px;
 padding: 0.1vh;
 }
 
@@ -11370,7 +11358,8 @@ padding: 0.1vh;
   height: 90%;
   width: 90%;
   display: grid;
-  grid-template-rows: 10% 90%;
+  grid-template-rows: 5% 90% 5%;
+  grid-row-gap: 1vh ;
 }
 
 .CC-C-B1{
@@ -11384,7 +11373,7 @@ padding: 0.1vh;
   margin: 0;
   font-size: 1vw;
   font-weight: 500;
-  color: gray;
+  color: black;
   display: flex;
   align-items: center;
 }
@@ -11403,6 +11392,7 @@ padding: 0.1vh;
 .CC-C-B2{
   border-bottom: 1px solid gray;
   display: grid;
+  grid-template-rows: repeat(12, 1fr);
   grid-row-gap: 1vh ;
 }
 
@@ -11412,10 +11402,9 @@ padding: 0.1vh;
 
 .producto-carrito {
   display: grid;
-  height: 100%;
   width: 100%;
   background-color: none;
-  grid-template-columns: 19% 39% 9% 19% 9%;
+  grid-template-columns: 5% 39% 15% 19% 9%;
   grid-column-gap: 1% ;
   justify-content: space-between;
   border-bottom: 1px solid gray;
@@ -11425,11 +11414,11 @@ padding: 0.1vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .PC-img-1{
   width: 100%;
-  height: fit-content;
 }
 
 .PC-C-B2{
@@ -11478,4 +11467,37 @@ padding: 0.1vh;
 #eliminarProducto{
   border: none;
   text-decoration: none;
+  background-color: white;
+}
+
+.CC-C-B3{
+  background-color: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 100%;
+}
+
+#eliminar-productos{
+  grid-row: 1/2;
+  grid-column: 2/3;
+}
+
+.precioProducto{
+  height: 100%;
+  grid-row: 1/2;
+  grid-column: 1/2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.navbar-nav{
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav a{
+  margin-right: 2vh;
+  cursor: pointer;
 }
